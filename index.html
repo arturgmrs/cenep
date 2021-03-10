@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMC</title>
+    
+  </head>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body, h1,h2,h3,h4,h5,h6 {font-family:  Copperplate,Copperplate Gothic Light,fantasy;; }
+
+.w3-row-padding img {margin-bottom: 12px}
+ 
+
+
+table {
+ background: #54545c;
+  width: 300px;
+  border: px ;
+  padding: 50px;
+  margin: px;
+}
+
+h1{
+color:white;}
+h3{
+
+  background-color: #F1F1F1;}
+.header {
+  text-align: center;
+  padding: 10px;
+}
+
+button {
+  background-color: #323757; 
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+
+
+button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+div.rodapé{
+
+
+color:white;
+background-color:black;}
+ 
+@media only screen and (max-width: 600px) {#main {margin-left: 0}}
+</style>
+<center>
+
+
+<body bgcolor="#323757">
+ 
+    <main>
+	<div class="header"> <h1> </h1></div>
+      <div class="">
+  <h3><big>Calculadora de IMC</big>- </br>
+  indice de massa corporal</h3>
+ <h4> preencha o formulario abaixo com seus dados para obter o seu IMC</h4>
+</div>
+
+<table>
+		<div class="container">
+        <td><div class="input">
+            <label>Nome:</label>
+            <input type="text" id='nome'>
+        </div></td>
+		<td><div class="input">
+            <label>Data de nascimento:</label>
+            <input type="date" id='data'>
+        </div></td>
+        <td><div class="input">
+            <label>Altura:</label>
+            <input type="number" id='altura'>
+        </div></td>
+        <td><div class="input">
+            <label>Peso:</label>
+            <input type="number" id='peso'>
+        </div></td></table>
+        <button id='calcular'>Calcular</button>
+
+        <div class="result" id='resultado'></div>
+      </div> 
+    </main>
+	
+	
+    <script> 
+
+const meuCabecalho = document.querySelector('h1');
+meuCabecalho.textContent = 'Ola mundo!';
+
+const calcular = document.getElementById('calcular');
+
+function imc () {
+    const nome = document.getElementById('nome').value;
+	const data = document.getElementById('data').value;
+    const altura = document.getElementById('altura').value;
+    const peso = document.getElementById('peso').value;
+    const resultado = document.getElementById('resultado');
+
+    if (nome !== '' && altura !== '' && peso !== ''&& data!== '') {
+
+        const valorIMC = (peso / (altura * altura)).toFixed(1);
+
+        let classificacao = '';
+
+        if (valorIMC < 18.5){
+            classificacao = 'abaixo do peso considerado ideal.';
+        }else if (valorIMC < 25) {
+            classificacao = 'com peso ideal.';
+        }else if (valorIMC < 30){
+            classificacao = 'levemente acima do peso considerado ideal.';
+        }else if (valorIMC < 35){
+            classificacao = 'com obesidade grau I.';
+        }else if (valorIMC < 40){
+            classificacao = 'com obesidade grau II';
+        }else {
+            classificacao = 'com obesidade grau III. ';
+        }
+
+        resultado.textContent = `${nome} nascido/a em ${data} seu IMC é ${valorIMC} e você está ${classificacao}`;
+        
+    }else {
+        resultado.textContent = 'para obter o resultado é necessário preencher todos os campos';
+    }
+
+}
+
+calcular.addEventListener('click', imc);
+
+
+	</script>
+
+
+<div class="rodapé">
+<h2>Atividade de programação, turma i3m02.</br> 
+ Alunos: Allyson Tyrone, Kayllane Sayonara e Neuza Beariz</h2><div>
+
+
+
+	</center>
+  </body>
+</html>
